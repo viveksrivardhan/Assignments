@@ -1,0 +1,66 @@
+<!-- PROBLEM STATEMENT :
+
+Create a letter guessing game where the player will have only three number of attempts,
+
+And have to pick a letter from an array of letters as shown in example below :
+
+Also, if the guessed letter is present in the array ,show the player as winner and if the letter
+
+guessed does not match , show the player as loser.
+
+Example : LetterArray =[“a”,”b”,”d”,”z”,”y”,”f”,”i”,”k”]
+
+Number of attempts =3
+
+Submission Format: Solve the problem statement, upload it to the GitHub and upload the repository link in a text/pdf/word/excel file.
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" placeholder="Enter one letter" id="text1" />
+    <button id="button1" onclick="clicked()">Submit</button>
+    <script>
+        var button = document.getElementById("button1");
+        var count = 0;
+        button.addEventListener("click", perform);
+        console.log("count:",count);
+
+        function perform() {
+        var a = document.getElementById("text1").value;
+        var arr = [];
+        arr = a.split("");
+        if (arr.length > 2 || arr.length < 1) {
+            alert("enter only one charater");
+        }
+        else{
+            var arr1 = ["a","b","d","z","y","f","i","k"];
+            let string = arr.toString();
+            if(arr1.indexOf(string) != -1){
+                alert("Winner...yay");
+                button.removeEventListener("click",perform);
+            }
+            else{
+                alert("Lost it..Try again", count);
+            }
+        }
+      }
+
+      function clicked(){   
+        count++;
+        console.log(count);
+        if ( count > 3){
+            button.removeEventListener("click",perform);
+            alert("Attempts exceeded");
+        }
+
+      }
+    </script>
+  </body>
+</html>
